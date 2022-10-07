@@ -4,7 +4,7 @@ namespace Test
     {
         public static void Entry()
         {
-            var products = new List<Product>() { new Product() { Name = "A", Price = 10 }, new Product() { Name = "B", Price = 20 }, new Product() { Name = "C", Price = 30 }, new Product() { Name = "D", Price = 40 }, new Product() { Name = "E", Price = 50 }, new Product() { Name = "F", Price = 50 } };
+            var products = new List<Product>() { new Product() { Name = "Apple", Price = 10 }, new Product() { Name = "Ball", Price = 20 }, new Product() { Name = "Chair", Price = 30 }, new Product() { Name = "Dumble", Price = 40 }, new Product() { Name = "Encyclopedia", Price = 50 }, new Product() { Name = "Fan", Price = 50 } };
 
 
             // LINQ Query Operators
@@ -27,9 +27,9 @@ namespace Test
 
             
             // Single - To find exactly one object (can be used in place of where) - throws error if there are more than one matching object
-            var productA = products.Single(prod => prod.Name == "A");
+            var productApple = products.Single(prod => prod.Name == "Apple");
 
-            System.Console.WriteLine(productA.Name);
+            System.Console.WriteLine(productApple.Name);
 
             // SingleOrDefault - will return the default value if it doesn't find the matching object
 
@@ -38,7 +38,7 @@ namespace Test
             System.Console.WriteLine(productK == null);
 
 
-            // To get first matching object
+            // To get first matching object - (Also FirstOrDefault)
             var firstProduct = products.First();
             System.Console.WriteLine(firstProduct.Name);
 
@@ -46,12 +46,36 @@ namespace Test
             System.Console.WriteLine(firstProductWithPrice50.Name);
 
 
-            // To get last matching object
+            // To get last matching object - (Also LastOrDefault)
             var lastProduct = products.Last();
             System.Console.WriteLine(lastProduct.Name);
 
             var lastProductWithPrice50 = products.Last(prod => prod.Price == 50);
             System.Console.WriteLine(lastProductWithPrice50.Name);
+
+
+            // For paginated data
+            var pagedProducts = products.Skip(2).Take(3);
+
+            foreach(var prod in pagedProducts)
+                System.Console.WriteLine(prod.Name);
+
+            
+            
+            var totalProducts = products.Count();
+
+            System.Console.WriteLine(totalProducts);
+
+            var highestPrice = products.Max(prod => prod.Price);
+
+            var lowestPrice = products.Min(prod => prod.Price);
+
+            var totalPrices = products.Sum(prod => prod.Price);
+
+            var avgPrice = products.Average(prod => prod.Price);
+
+            System.Console.WriteLine(highestPrice + " " + lowestPrice + " " + totalPrices + " " + avgPrice);
+
         }
     }
 }

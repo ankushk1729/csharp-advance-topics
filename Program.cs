@@ -46,6 +46,11 @@
 
             // Dynamics
             Dynamic.Entry();
+
+            // Exception
+            Exception_.Entry();
+            
+            CustomException.Entry();
         }
     }
 }

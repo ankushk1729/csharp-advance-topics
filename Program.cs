@@ -41,8 +41,11 @@
             num = num.Square();
             System.Console.WriteLine(num);
 
-
+            // LINQ
             LINQ.Entry();
+
+            // Dynamics
+            Dynamic.Entry();
         }
     }
 }

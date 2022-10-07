@@ -51,6 +51,9 @@
             Exception_.Entry();
             
             CustomException.Entry();
+
+            // Async / Await
+            Async.Entry();
         }
     }
 }
